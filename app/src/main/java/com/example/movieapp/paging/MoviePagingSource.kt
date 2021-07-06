@@ -2,7 +2,7 @@ package com.example.movieapp.paging
 
 import androidx.paging.PagingSource
 import com.example.movieapp.network.ApiService
-import com.example.movieapp.model.Results
+import com.example.movieapp.model.homeMovies.Results
 import com.example.movieapp.utils.BaseUrls
 
 class MoviePagingSource(

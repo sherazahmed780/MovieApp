@@ -1,4 +1,5 @@
 package com.example.movieapp.adapters
+
 import android.view.LayoutInflater
 
 import android.view.ViewGroup
@@ -10,12 +11,16 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.databinding.MovieItemBinding
+import com.example.movieapp.listeners.MovieItemClickListener
 
-import com.example.movieapp.model.Results
+import com.example.movieapp.model.homeMovies.Results
 
 
-class MovieAdapter constructor(private val activity: FragmentActivity) :
+class MovieAdapter constructor(private val clickListener: MovieItemClickListener,
+    private val activity: FragmentActivity,
+) :
     PagingDataAdapter<Results, MovieAdapter.BindingViewHolder>(MovieComparator) {
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingViewHolder {
@@ -27,10 +32,17 @@ class MovieAdapter constructor(private val activity: FragmentActivity) :
 
     override fun onBindViewHolder(holder: BindingViewHolder, position: Int) {
 
-        val results = getItem(position)
+        val results: Results = getItem(position)!!
 
         holder.itemBinding.setVariable(BR.movieItem, results)
         holder.itemBinding.executePendingBindings()
+
+        holder.itemView.setOnClickListener {
+
+            clickListener.onMovieClick(it,position,results)
+
+        }
+
     }
 
 
