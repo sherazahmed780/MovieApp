@@ -12,11 +12,34 @@
         tools:layout="@layout/fragment_movies_list" >
         <action
             android:id="@+id/action_moviesListFragment_to_singleMovieDetailFragment"
-            app:destination="@id/singleMovieDetailFragment" />
+            app:destination="@id/singleMovieDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_moviesListFragment_to_searchMovieFragment"
+            app:destination="@id/searchMovieFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/singleMovieDetailFragment"
         android:name="com.example.movieapp.fragments.SingleMovieDetailFragment"
         android:label="fragment_single_movie_detail"
         tools:layout="@layout/fragment_single_movie_detail" />
+    <fragment
+        android:id="@+id/searchMovieFragment"
+        android:name="com.example.movieapp.fragments.SearchMovieFragment"
+        android:label="SearchMovieFragment" >
+        <action
+            android:id="@+id/action_searchMovieFragment_to_singleMovieDetailFragment"
+            app:destination="@id/singleMovieDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 </navigation>

@@ -1,6 +1,7 @@
 package com.example.movieapp.network
 
 import com.example.movieapp.model.homeMovies.MovieModel
+import com.example.movieapp.model.search.SearchModel
 import com.example.movieapp.model.singleMovie.SingleMovieModel
 
 import retrofit2.http.GET
@@ -16,8 +17,15 @@ interface ApiService {
 
 
     @GET("movie/{id}}")
-    suspend fun getSingleMovie(@Path("id") movieID: String,@Query("api_key") apikey: String)
+    suspend fun getSingleMovie(@Path("id") movieID: String, @Query("api_key") apikey: String)
             : SingleMovieModel
 
+
+    @GET("search/movie")
+    suspend fun getSearchedMovies(
+        @Query("api_key") apikey: String,
+        @Query("query") query: String,
+        @Query("page") pageNo: Int,
+    ): SearchModel
 
 }

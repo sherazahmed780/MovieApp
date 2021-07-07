@@ -20,7 +20,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+    @Provides
+    @Singleton
+    fun getContext(app: Application): Context {
 
+        return app.applicationContext
+
+    }
 
     @Provides
     @Singleton
@@ -33,17 +39,16 @@ object AppModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(
-        loggingInterceptor: HttpLoggingInterceptor,
+        loggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            //.addInterceptor(AuthInterceptor(BuildConfig.API_KEY))
             .build()
     }
 
     @Provides
     @Singleton
-    fun providesRetroFitBuilder( okHttpClient: OkHttpClient): Retrofit =
+    fun providesRetroFitBuilder(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .baseUrl(BaseUrls.BASE_URL_MAIN)
             .addConverterFactory(GsonConverterFactory.create())
@@ -55,13 +60,5 @@ object AppModule {
     fun provideApiService(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
 
-
-    @Provides
-    @Singleton
-    fun getContext(app: Application): Context {
-
-        return app.applicationContext
-
-    }
 
 }

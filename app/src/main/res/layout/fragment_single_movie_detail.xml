@@ -11,7 +11,7 @@
 
         <variable
             name="clickHandler"
-            type="com.example.movieapp.listeners.BackBtnListner" />
+            type="com.example.movieapp.listeners.BackBtnListener" />
 
     </data>
 

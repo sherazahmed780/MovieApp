@@ -13,9 +13,9 @@ class MovieRepo @Inject constructor(private val apiServiceImpl: ApiServiceImpl) 
 
     fun getSingleMovieData(movieID: String): Flow<SingleMovieModel> = flow {
 
-        val resposne = apiServiceImpl.getSingleMovie(movieID)
+        val response = apiServiceImpl.getSingleMovie(movieID)
 
-        emit(resposne)
+        emit(response)
 
     }.flowOn(Dispatchers.IO)
         .conflate()
